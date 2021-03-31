@@ -10,14 +10,14 @@ class Cypher:
         for x in range(26):
             _scramble[x] = chr((x + code) % 26 + ord("A"))
             _decypher[x] = chr((x - code) % 26 + ord("A"))
-            self.codeit = "".join(_scramble)
-            self.decodeit = "".join(_decypher)
+        self.codeit = "".join(_scramble)
+        self.decodeit = "".join(_decypher)
 
     def _convert(self, text, crypt):
-        message = list(text)
-        message = len(message)
-        for x in range(message):
-            if message[x].isalpha() == True:
+        message = list(text.upper())
+        _message = len(message)
+        for x in range(_message):
+            if message[x].isupper() == True:
                 i = ord(message[x]) - ord("A")
                 message[x] = crypt[i]
         new ="".join(message)
@@ -30,3 +30,4 @@ class Cypher:
     def decypher(self, encrpted):
         decyh = self._convert(encrpted, self.decodeit)
         return decyh
+
